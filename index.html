@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Private</title>
+<style>
+:root{--text:#37352f;--muted:#787774;--light:#9b9a97;--line:#e9e9e7;--bg:#fff;--side:#f7f7f5;--hover:#efefed;--soft:#fbfbfa}
+*{box-sizing:border-box}
+body{margin:0;font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);font-size:15px;line-height:1.55}
+a{color:inherit;text-decoration:underline;text-decoration-color:rgba(55,53,47,.35);text-underline-offset:2px}
+a:hover{text-decoration-color:var(--text)}
+.app{display:flex;min-height:100vh}
+nav{width:260px;flex:none;background:var(--side);border-right:1px solid var(--line);position:sticky;top:0;height:100vh;overflow:auto;padding:16px 8px}
+nav .ws{font-weight:600;padding:4px 12px 14px;font-size:15px}
+nav .ws small{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+nav .grp{color:var(--light);font-size:12px;font-weight:600;padding:16px 12px 4px}
+nav a{display:flex;justify-content:space-between;gap:6px;padding:5px 12px;border-radius:5px;text-decoration:none;color:var(--text);font-size:14.5px}
+nav a:hover{background:var(--hover)} nav a.on{background:var(--hover);font-weight:600}
+nav a .n{color:var(--light);font-size:12.5px}
+main{flex:1;min-width:0;padding:40px 56px 100px;max-width:1500px}
+h1{font-size:34px;font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
+.lede{color:var(--muted);max-width:860px;margin:0 0 20px;font-size:15.5px}
+.note{background:var(--side);border-radius:6px;padding:14px 18px;margin:0 0 22px;max-width:980px;font-size:14px}
+.note.warn{background:#fdf6e3}
+.note b{font-weight:600}
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);margin:0 -56px 24px;padding:12px 56px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end}
+.bar label{display:flex;flex-direction:column;font-size:12px;color:var(--muted);gap:3px}
+.bar label.cb{flex-direction:row;align-items:center;gap:6px;font-size:13.5px;color:var(--text);padding-bottom:6px}
+.bar input,.bar select{font:inherit;font-size:14px;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:#fff;color:var(--text)}
+.bar input[type=search]{width:240px}
+.bar .count{margin-left:auto;color:var(--muted);font-size:13.5px;padding-bottom:7px}
+.co{border-top:1px solid var(--line);padding:30px 0 10px;margin:0}
+.co h2{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+.co .tagline{color:var(--muted);margin:0 0 16px}
+dl.props{display:grid;grid-template-columns:240px 1fr;gap:0;margin:0 0 22px;max-width:1100px;border-top:1px solid var(--line)}
+dl.props dt,dl.props dd{margin:0;padding:8px 10px;border-bottom:1px solid var(--line);font-size:14.5px}
+dl.props dt{color:var(--muted)}
+dl.props dd{font-weight:500}
+dd .sub{display:block;color:var(--muted);font-size:13px;font-weight:400}
+h3.ads{font-size:15px;font-weight:600;color:var(--muted);margin:18px 0 10px}
+.ad{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:26px;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 18px;background:#fff}
+.ad h4{font-size:17px;margin:0 0 12px}
+.ad dl{display:grid;grid-template-columns:190px 1fr;margin:0;border-top:1px solid var(--line)}
+.ad dt,.ad dd{margin:0;padding:7px 8px;border-bottom:1px solid var(--line);font-size:14.5px}
+.ad dt{color:var(--muted)}
+.ad dd.hook{font-size:16.5px;font-weight:600;line-height:1.45}
+.ad dd.num{font-size:16px;font-weight:600}
+.ad details{margin-top:12px}
+.ad summary{cursor:pointer;color:var(--muted);font-size:14px;user-select:none}
+.ad details dl{margin-top:8px}
+.media{position:relative;background:#191919;border-radius:8px;display:flex;align-items:center;justify-content:center;min-height:200px;overflow:hidden;cursor:zoom-in;position:sticky;top:90px}
+.media img,.media video{display:block;max-width:100%;max-height:640px;object-fit:contain}
+.media .none{color:#aaa;font-size:13px;padding:24px;text-align:center}
+.medianote{color:var(--muted);font-size:12.5px;margin-top:6px;text-align:center}
+.showall{font:inherit;font-size:14px;border:1px solid var(--line);background:#fff;border-radius:6px;padding:7px 14px;cursor:pointer;margin:0 0 20px}
+.loadmore{display:block;margin:16px auto;font:inherit;font-size:14px;border:1px solid var(--line);background:#fff;border-radius:6px;padding:8px 16px;cursor:pointer}
+.muted{color:var(--muted)} .small{font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;max-width:1100px;margin:0 0 26px}
+.stat{border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.stat .v{font-size:28px;font-weight:700} .stat .k{color:var(--muted);font-size:13px}
+table.t{border-collapse:collapse;width:100%;font-size:14px;margin:0 0 28px}
+table.t th{text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--line);padding:8px 10px;background:var(--soft);vertical-align:bottom}
+table.t td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+table.t tr:hover td{background:#fafaf9}
+table.t td.thumb img{width:72px;max-height:128px;object-fit:cover;border-radius:4px;background:#111;display:block}
+h2.sec{font-size:24px;margin:34px 0 6px}
+p.secnote{color:var(--muted);margin:0 0 14px;max-width:900px}
+.prose{max-width:860px} .prose li{margin:6px 0}
+.clamp{max-height:6.2em;overflow:hidden;cursor:pointer} .clamp.open{max-height:none}
+#lb{position:fixed;inset:0;background:rgba(15,15,15,.85);z-index:100;display:none;align-items:center;justify-content:center;padding:30px}
+#lb.on{display:flex} #lb .box{background:#fff;border-radius:10px;max-width:1300px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px;padding:20px}
+#lb .m img,#lb .m video{max-width:560px;max-height:86vh;display:block;border-radius:6px;background:#111}
+#lb dl{display:grid;grid-template-columns:170px 1fr;margin:0;border-top:1px solid var(--line)} #lb dt,#lb dd{margin:0;padding:6px 8px;border-bottom:1px solid var(--line);font-size:14px;word-break:break-word} #lb dt{color:var(--muted)}
+#lb .x{position:fixed;top:14px;right:24px;color:#fff;font-size:30px;cursor:pointer}
+@media (max-width:1100px){.ad{grid-template-columns:1fr}.media{position:static}dl.props{grid-template-columns:170px 1fr}.ad dl{grid-template-columns:140px 1fr}}
+@media (max-width:900px){nav{display:none} main{padding:20px}.bar{margin:0 -20px 20px;padding:10px 20px}}
+</style></head>
+<body><div class="app"><nav id="nav"></nav><main id="main"></main></div>
+<div id="lb"><span class="x" onclick="closeLB()">×</span><div class="box" id="lbbox"></div></div>
+<div id="gate" style="position:fixed;inset:0;z-index:1000;background:#f7f7f5;display:flex;align-items:center;justify-content:center;font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#37352f">
+  <form id="gateform" style="background:#fff;border:1px solid #e9e9e7;border-radius:10px;padding:30px 32px;width:360px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
+    <div style="font-size:21px;font-weight:700;margin-bottom:4px">Private</div>
+    <div style="color:#787774;font-size:14px;margin-bottom:18px">Enter the password to open this page.</div>
+    <input id="gatepw" type="password" placeholder="Password" autocomplete="current-password" required
+      style="width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:10px 11px;border:1px solid #e9e9e7;border-radius:6px;margin-bottom:10px">
+    <label style="display:flex;gap:8px;align-items:center;font-size:13.5px;color:#787774;margin-bottom:14px"><input id="gatekeep" type="checkbox"> Keep me signed in on this device</label>
+    <div id="gateerr" style="color:#b42318;font-size:13.5px;margin:-4px 0 10px;display:none"></div>
+    <button id="gatebtn" type="submit" style="width:100%;font:inherit;font-weight:600;font-size:15px;padding:10px;border:0;border-radius:6px;background:#37352f;color:#fff;cursor:pointer">Open</button>
+  </form>
+</div>
+<script>
+(function(){
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const toB64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+  const cache = {};
+  async function decryptBuf(key, buf){
+    const iv = new Uint8Array(buf.slice(0,12));
+    return crypto.subtle.decrypt({name:"AES-GCM", iv}, key, buf.slice(12));
+  }
+  window.decFile = async function(path, mime){
+    if (cache[path]) return cache[path];
+    const res = await fetch(path); if (!res.ok) throw new Error("fetch " + path + " " + res.status);
+    const pt = await decryptBuf(window.__KEY, await res.arrayBuffer());
+    return (cache[path] = URL.createObjectURL(new Blob([pt], {type: mime || "application/octet-stream"})));
+  };
+  async function deriveKey(pw){
+    const cfg = await (await fetch("config.json", {cache:"no-store"})).json();
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
+    return crypto.subtle.deriveKey({name:"PBKDF2", salt: b64(cfg.salt), iterations: cfg.iterations, hash:"SHA-256"},
+      base, {name:"AES-GCM", length:256}, true, ["decrypt"]);
+  }
+  async function openWith(key){
+    const res = await fetch("data.bin", {cache:"no-store"});
+    const pt = await decryptBuf(key, await res.arrayBuffer());          // throws on a wrong password
+    const stream = new Blob([pt]).stream().pipeThrough(new DecompressionStream("gzip"));
+    const data = JSON.parse(await new Response(stream).text());
+    window.__KEY = key; window.ENC_MODE = true;
+    for (const k of ["META","DATA","COMP","NETS","CNET"]) window[k] = data[k] || (k==="META"?{}:[]);
+    const s = document.createElement("script"); s.textContent = data.APP;
+    document.body.appendChild(s);
+    document.getElementById("gate").remove();
+  }
+  const saved = sessionStorage.getItem("arv_k") || localStorage.getItem("arv_k");
+  if (saved) {
+    crypto.subtle.importKey("raw", b64(saved), {name:"AES-GCM"}, true, ["decrypt"]).then(openWith).catch(() => {
+      sessionStorage.removeItem("arv_k"); localStorage.removeItem("arv_k"); });
+  }
+  document.getElementById("gateform").addEventListener("submit", async e => {
+    e.preventDefault();
+    const btn = document.getElementById("gatebtn"), err = document.getElementById("gateerr");
+    btn.disabled = true; btn.textContent = "Unlocking…"; err.style.display = "none";
+    try {
+      const key = await deriveKey(document.getElementById("gatepw").value);
+      await openWith(key);
+      const raw = toB64(await crypto.subtle.exportKey("raw", key));
+      (document.getElementById("gatekeep").checked ? localStorage : sessionStorage).setItem("arv_k", raw);
+    } catch (x) {
+      err.textContent = "Wrong password. Try again."; err.style.display = "block";
+      btn.disabled = false; btn.textContent = "Open";
+    }
+  });
+})();
+</script>
+</body></html>
