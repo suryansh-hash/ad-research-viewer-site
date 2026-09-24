@@ -127,11 +127,11 @@ p.secnote{color:var(--muted);margin:0 0 14px;max-width:900px}
     e.preventDefault();
     const btn = document.getElementById("gatebtn"), err = document.getElementById("gateerr");
     btn.disabled = true; btn.textContent = "Unlocking…"; err.style.display = "none";
+    const keep = document.getElementById("gatekeep").checked;
     try {
       const key = await deriveKey(document.getElementById("gatepw").value);
       await openWith(key);
-      const raw = toB64(await crypto.subtle.exportKey("raw", key));
-      (document.getElementById("gatekeep").checked ? localStorage : sessionStorage).setItem("arv_k", raw);
+      try { (keep ? localStorage : sessionStorage).setItem("arv_k", toB64(await crypto.subtle.exportKey("raw", key))); } catch (_) {}
     } catch (x) {
       err.textContent = "Wrong password. Try again."; err.style.display = "block";
       btn.disabled = false; btn.textContent = "Open";
